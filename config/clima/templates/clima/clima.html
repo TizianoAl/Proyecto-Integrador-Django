@@ -45,16 +45,16 @@
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-50x50">
-                                    <img src="http://openweathermap.org/img/w/10d.png" alt="Image">
+                                    <img src="http://openweathermap.org/img/w/{{clima_ciudad.icono }}.png" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">Las Vegas</span>
+                                        <span class="title">{{clima_ciudad.ciudad }}</span>
                                         <br>
-                                        <span class="subtitle">29° C</span>
-                                        <br> thunderstorm with heavy rain
+                                        <span class="subtitle">{{clima_ciudad.temperatura }}° C</span>
+                                        <br> {{clima_ciudad.descripcion }}
                                     </p>
                                 </div>
                             </div>
