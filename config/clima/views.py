@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render
 
 def index(request):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=333079c49b302f10109f0cdea2cedf1a'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=333079c49b302f10109f0cdea2cedf1a&lang=es'
     ciudad = 'London'
 
     r = requests.get(url.format(ciudad)).json()
