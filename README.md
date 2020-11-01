@@ -5,16 +5,44 @@ devuelve el nombre de la ciudad que ingresaste, la temperatura en °C, la descri
 de la descripción. Después una vez ingresada la ciudad el usuario puede eliminar la ciudad que ingreso para
 ver el clima.
 
-Instrucciones:
-  1- Abrir la terminal en la carpeta del proyecto.
-  2- Crear el mkvirtualenv.
-  3- Instalar el requirements.txt.
-  4- Entrar en la carpeta de la aplicación.
-  5- Después de ingresar a la carpeta hacer python manage.py runserver para correr la aplicación.
-  6- Una vez que este corriendo la aplicación el usuario tendrá que insertar la ciudad del cual quiera saber el clima.
-  7- Si el usuario lo desea puede borrar la ciudad ingresada.
 
+### Instrucciones:
 
-Integrantes:
-  ALFAZAK, Tiziano
-  DIAZ ROMAGNOLI, Pedro
+1- Clonar el repositorio del proyecto
+
+```sh
+$ git clone --link del repositorio--
+```
+
+2- Abrir la terminal en la carpeta del proyecto
+
+3- Crear el mkvirtualenv
+
+```sh
+$ mkvirtualenv --nombre del mkvirtualenv--
+```
+
+4- Instalar el requirements.txt
+
+```sh
+$ pip3 install -r requirements.txt
+```
+
+5- Entrar a la carpeta config
+
+```sh
+$ ls
+$ cd config/
+```
+
+6- Corres la pagina web
+
+```sh
+$ python manage.py runserver
+```
+
+7- Una vez corriendo la página insertar una ciudad en el buscador de la página.
+
+8- La página le va a devolver los °C de la ciudad que ingreso, la descripción del clima y una imagen.
+
+9- Si el usuario lo desea puede agregar una o mas ciudades y también puede eliminar las ciudades que buscó.
