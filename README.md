@@ -11,7 +11,7 @@ ver el clima.
 1- Clonar el repositorio del proyecto
 
 ```sh
-$ git clone --link del repositorio--
+$ git clone https://github.com/TizianoAl/Proyecto-Integrador-Django.git
 ```
 
 2- Abrir la terminal en la carpeta del proyecto
