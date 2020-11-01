@@ -1,6 +1,0 @@
-
-El proyecto es una página meteorológica en el cual consta que el usuario debe inserta
-una ciudad en el buscador del cual quiera saber el clima y este le devuelve el nombre de
-la ciudad que ingresaste, la temperatura en °C, la descripción del clima y una imagen de la descripción.
-Después una vez ingresada la ciudad el usuario puede eliminar la ciudad que ingreso
-para ver el clima.
