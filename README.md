@@ -10,7 +10,7 @@ Instrucciones:
   2- Crear el mkvirtualenv.
   3- Instalar el requirements.txt.
   4- Entrar en la carpeta de la aplicación.
-  5- Después debe hacer python manage.py runserver para correr la aplicación.
+  5- Después de ingresar a la carpeta hacer python manage.py runserver para correr la aplicación.
   6- Una vez que este corriendo la aplicación el usuario tendrá que insertar la ciudad del cual quiera saber el clima.
   7- Si el usuario lo desea puede borrar la ciudad ingresada.
 
