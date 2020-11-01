@@ -2,7 +2,7 @@
 
 Nuestro proyecto es una página meteorológica en el cual el usuario inserta una ciudad en el buscador y le
 devuelve el nombre de la ciudad que ingresaste, la temperatura en °C, la descripción del clima y una imagen
-de la descripción. Después una vez ingresada la ciudad el usuario puedo eliminar la ciudad que ingreso para
+de la descripción. Después una vez ingresada la ciudad el usuario puede eliminar la ciudad que ingreso para
 ver el clima.
 
 Instrucciones:
