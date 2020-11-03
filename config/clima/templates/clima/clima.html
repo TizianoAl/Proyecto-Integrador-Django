@@ -34,6 +34,9 @@
                                 </button>
                             </div>
                         </div>
+                        {% if mensaje %}
+                            <div class="notification {{ mensaje_class }}">{{ mensaje }}</div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
