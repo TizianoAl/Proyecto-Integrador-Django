@@ -59,8 +59,15 @@
                                     <p>
                                         <span class="title">{{clima_ciudad.ciudad }}</span>
                                         <br>
-                                        <span class="subtitle">{{clima_ciudad.temperatura }}° C</span>
-                                        <br> {{clima_ciudad.descripcion }}
+                                        <span style="font-weight: bold" class="subtitle">{{clima_ciudad.temperatura }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Temp máxima {{clima_ciudad.temp_max }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Temp mínima {{clima_ciudad.temp_min }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Humedad {{clima_ciudad.humedad }}%</span>
+                                        <br>
+                                        {{clima_ciudad.descripcion }}
                                     </p>
                                 </div>
                             </div>

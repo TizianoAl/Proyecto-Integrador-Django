@@ -48,6 +48,9 @@ def index(request):
         clima_ciudad = {
             'ciudad' : ciudad.nombre,
             'temperatura' : r['main']['temp'],
+            'temp_max' : r['main']['temp_max'],
+            'temp_min' : r['main']['temp_min'],
+            'humedad' : r['main']['humidity'],
             'descripcion' : r['weather'][0]['description'],
             'icono' : r['weather'][0]['icon'],
         }
