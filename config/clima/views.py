@@ -1,5 +1,5 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Ciudad
 from .forms import CiudadForm
 
@@ -23,16 +23,13 @@ def index(request):
                 if r['cod'] == 200:
                     form.save()
                 else:
-                    err_msg = 'La ciuda que desea ingresar no existe'
+                    err_msg = 'La ciudad que desea ingresar no existe'
             else:
                 err_msg = 'La ciudad que desea ingresar ya existe en la base de datos'
 
         if err_msg:
             mensaje = err_msg
             mensaje_class = 'is-danger'
-        else:
-            mensaje = 'La ciudad se agregó correctamente'
-            mensaje_class = 'is-success'
 
 
     form = CiudadForm()
@@ -65,3 +62,10 @@ def index(request):
         'mensaje_class' : mensaje_class,
     }
     return render(request, 'clima/clima.html', context)
+
+
+def eliminar_ciudad(request, nombre_ciudad):
+    
+    Ciudad.objects.get(nombre=nombre_ciudad).delete()
+
+    return redirect('home')

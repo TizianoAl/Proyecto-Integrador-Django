@@ -13,7 +13,7 @@
         <div class="hero-body" style="background-color: rgb(31, 97, 141);">
             <div class="container">
                 <h1 class="title">
-                    Clima
+                    Clima de las ciudades
                 </h1>
             </div>
         </div>
@@ -70,6 +70,11 @@
                                         {{clima_ciudad.descripcion }}
                                     </p>
                                 </div>
+                            </div>
+                            <div class="media-right">
+                                <a href="{% url 'eliminar_ciudad' clima_ciudad.ciudad %}">
+                                    <button class="delete"></button>
+                                </a>
                             </div>
                         </article>
                     </div>
