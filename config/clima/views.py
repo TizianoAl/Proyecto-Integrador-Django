@@ -44,6 +44,7 @@ def index(request):
 
         clima_ciudad = {
             'ciudad' : ciudad.nombre,
+            'pais' : r['sys']['country'],
             'temperatura' : r['main']['temp'],
             'temp_max' : r['main']['temp_max'],
             'temp_min' : r['main']['temp_min'],
@@ -65,7 +66,7 @@ def index(request):
 
 
 def eliminar_ciudad(request, nombre_ciudad):
-    
+
     Ciudad.objects.get(nombre=nombre_ciudad).delete()
 
     return redirect('home')
