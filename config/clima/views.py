@@ -1,4 +1,5 @@
 import requests
+import datetime
 from django.shortcuts import render, redirect
 from .models import Ciudad
 from .forms import CiudadForm
@@ -55,7 +56,6 @@ def index(request):
 
         clima_data.append(clima_ciudad)
 
-
     context = {
         'clima_data' : clima_data,
         'form' : form,
@@ -70,3 +70,44 @@ def eliminar_ciudad(request, nombre_ciudad):
     Ciudad.objects.get(nombre=nombre_ciudad).delete()
 
     return redirect('home')
+
+    #forcasted weather data API
+    v = 'api.openweathermap.org/data/2.5/forecast/daily?q={},{},{}&cnt={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
+    a = v.format(ciudad.nombre)
+    #accessing the API json data
+    full = requests.get(a).json()
+
+    # today's date taking as int
+    day = datetime.datetime.today()
+    fecha_hoy = int(day.strftime('%d'))
+
+
+    lista_pronostico = {} # dictionary to store json data
+
+    #looping to get value and put it in the dictionary
+    for c in range(0, full['cnt']):
+        variable_fecha = full['list'][c]['dt_txt']
+        objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
+        # print the json data and analyze the data coming to understand the structure. I couldn't find the better way
+        # to process date
+        if int(objeto_tiempo.strftime('%d')) == fecha_hoy or int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
+            # print(date_time_obj1.strftime('%d %a'))
+            if int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
+                today_date += 1
+            lista_pronostico[fecha_hoy] = {}
+            lista_pronostico[fecha_hoy]['day'] = objeto_tiempo.strftime('%A')
+            lista_pronostico[fecha_hoy]['date'] = objeto_tiempo.strftime('%d %b, %Y')
+            lista_pronostico[fecha_hoy]['time'] = objeto_tiempo.strftime('%I:%M %p')
+            lista_pronostico[fecha_hoy]['FeelsLike'] = full['list'][c]['main']['feels_like']
+
+            lista_pronostico[fecha_hoy]['temperature'] = full['list'][c]['main']['temp']
+            lista_pronostico[fecha_hoy]['temperature_max'] = full['list'][c]['main']['temp_max']
+            lista_pronostico[fecha_hoy]['temperature_min'] = full['list'][c]['main']['temp_min']
+
+            lista_pronostico[fecha_hoy]['description'] = full['list'][c]['weather'][0]['description']
+            lista_pronostico[fecha_hoy]['icon'] = full['list'][c]['weather'][0]['icon']
+
+            fecha_hoy += 1
+        else:
+            pass
+    #returning the context with all the data to the index.html
