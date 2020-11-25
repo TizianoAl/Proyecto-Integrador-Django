@@ -71,27 +71,22 @@ def eliminar_ciudad(request, nombre_ciudad):
 
     return redirect('home')
 
-    #forcasted weather data API
     v = 'api.openweathermap.org/data/2.5/forecast/daily?q={},{},{}&cnt={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
     a = v.format(ciudad.nombre)
-    #accessing the API json data
+
     full = requests.get(a).json()
 
-    # today's date taking as int
     day = datetime.datetime.today()
     fecha_hoy = int(day.strftime('%d'))
 
+    lista_pronostico = {}
 
-    lista_pronostico = {} # dictionary to store json data
-
-    #looping to get value and put it in the dictionary
     for c in range(0, full['cnt']):
         variable_fecha = full['list'][c]['dt_txt']
         objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
-        # print the json data and analyze the data coming to understand the structure. I couldn't find the better way
-        # to process date
+
         if int(objeto_tiempo.strftime('%d')) == fecha_hoy or int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
-            # print(date_time_obj1.strftime('%d %a'))
+
             if int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
                 today_date += 1
             lista_pronostico[fecha_hoy] = {}
@@ -110,4 +105,3 @@ def eliminar_ciudad(request, nombre_ciudad):
             fecha_hoy += 1
         else:
             pass
-    #returning the context with all the data to the index.html
