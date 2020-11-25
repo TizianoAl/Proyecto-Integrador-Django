@@ -56,23 +56,9 @@ def index(request):
 
         clima_data.append(clima_ciudad)
 
-    context = {
-        'clima_data' : clima_data,
-        'form' : form,
-        'mensaje' : mensaje,
-        'mensaje_class' : mensaje_class,
-    }
-    return render(request, 'clima/clima.html', context)
-
-
-def eliminar_ciudad(request, nombre_ciudad):
-
-    Ciudad.objects.get(nombre=nombre_ciudad).delete()
-
-    return redirect('home')
 
     v = 'api.openweathermap.org/data/2.5/forecast/daily?q={},{},{}&cnt={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
-    a = v.format(ciudad.nombre)
+    a = v.format(ciudades)
 
     full = requests.get(a).json()
 
@@ -88,7 +74,7 @@ def eliminar_ciudad(request, nombre_ciudad):
         if int(objeto_tiempo.strftime('%d')) == fecha_hoy or int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
 
             if int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
-                today_date += 1
+                fecha_hoy += 1
             lista_pronostico[fecha_hoy] = {}
             lista_pronostico[fecha_hoy]['day'] = objeto_tiempo.strftime('%A')
             lista_pronostico[fecha_hoy]['date'] = objeto_tiempo.strftime('%d %b, %Y')
@@ -105,3 +91,20 @@ def eliminar_ciudad(request, nombre_ciudad):
             fecha_hoy += 1
         else:
             pass
+
+
+    context = {
+        'clima_data' : clima_data,
+        'form' : form,
+        'mensaje' : mensaje,
+        'mensaje_class' : mensaje_class,
+    }
+    return render(request, 'clima/clima.html', context)
+
+
+def eliminar_ciudad(request, nombre_ciudad):
+
+    Ciudad.objects.get(nombre=nombre_ciudad).delete()
+
+    return redirect('home')
+

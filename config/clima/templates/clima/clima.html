@@ -1,6 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+	<style>
+.weather-bottom {
+    text-align: center;
+    margin-top: 2em;
+}
+.weather-bottom ul li {
+    display: inline-block;
+    padding: 1em 0;
+    float: left;
+    width: 16.6%;
+}
+.weather-bottom ul li.bg{
+    background: #314277;
+}
+.weather-bottom h4 {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 100;
+}
+figure.icons {
+    margin: 0.5em 0;
+}
+.weather-bottom h5 {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+}
+.weather-bottom h6 {
+    font-size: 1em;
+    color: #FFD700;
+    margin-top: 0.5em;
+
+.weather-bottom canvas {
+    width: 30px;
+    height: 30px;
+}
+.weather-bottom ul li {
+    width: 14.2%;
+	padding: 0.5em 0;
+}
+.weather-bottom h5 {
+    font-size: 0.9em;
+}
+.weather-bottom h6 {
+    font-size: 0.8em;
+}
+}
+/*--//responsive-design---*/
+	</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -69,6 +119,20 @@
                                         <br>
                                         {{clima_ciudad.descripcion }}
                                     </p>
+                                    <div class="weather-bottom">
+				                        <ul>
+					                        {% for x,y in forcast_data_list.items%}
+					                        <li class="bg"><h4>{{y.day}}</h4>
+						                        <figure class="icons">
+		                                        <img src="http://openweathermap.org/img/wn/{{y.icon}}.png" alt="Image" width="100px">
+						                        </figure>
+						                        <h5>{{y.temperature_max}}</h5>
+						                        <h6>{{y.temperature_max}}°C</h6>
+					                        </li>
+					                        {% endfor%}
+                                        </ul>
+				                        <div class="clear"> </div>
+			                        </div>
                                 </div>
                             </div>
                             <div class="media-right">
@@ -82,6 +146,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 </body>
 </html>
