@@ -119,20 +119,6 @@ figure.icons {
                                         <br>
                                         {{clima_ciudad.descripcion }}
                                     </p>
-                                    <div class="weather-bottom">
-				                        <ul>
-					                        {% for x,y in forcast_data_list.items%}
-					                        <li class="bg"><h4>{{y.day}}</h4>
-						                        <figure class="icons">
-		                                        <img src="http://openweathermap.org/img/wn/{{y.icon}}.png" alt="Image" width="100px">
-						                        </figure>
-						                        <h5>{{y.temperature_max}}</h5>
-						                        <h6>{{y.temperature_max}}°C</h6>
-					                        </li>
-					                        {% endfor%}
-                                        </ul>
-				                        <div class="clear"> </div>
-			                        </div>
                                 </div>
                             </div>
                             <div class="media-right">
