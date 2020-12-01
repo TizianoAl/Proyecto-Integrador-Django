@@ -66,7 +66,7 @@ def index(request):
 
 def forecast(index):
     v = 'api.openweathermap.org/data/2.5/forecast/daily?q={},{},{}&cnt={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
-    full = requests.get(format(ciudad)).json()
+    full = requests.get(format(clima_ciudad.ciudad)).json()
 
     day = datetime.datetime.today()
     fecha_hoy = int(day.strftime('%d'))
@@ -103,10 +103,19 @@ def forecast(index):
 
     return render(request, 'clima.html', context)
 
+def pronostico(request, nombre):
 
-def eliminar_ciudad(request, nombre_ciudad):
+    ciudad2 = Ciudad.objects.get(nombre=nombre)
+
+    context = {
+        'ciudad2':ciudad2,
+    }
+
+    return render(request, 'clima/vacio.html', context)
+
+
+def eliminar_ciudad(request, nombre_ciudad,):
 
     Ciudad.objects.get(nombre=nombre_ciudad).delete()
 
     return redirect('home')
-
