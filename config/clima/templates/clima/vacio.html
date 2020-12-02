@@ -1,6 +1,17 @@
 {% extends 'clima/main.html' %}
 {% block content %}
-
-  <h1>{{ ciudad2.nombre }}</h1>
-
+<div style="align=center">
+  {% for clima_ciudad in clima_data %}
+  <p>
+    <span>{{ ciudad2.nombre }}</span>
+    <br>
+    <span class="subtitle">Temp máxima {{clima_ciudad.temp_max }}° C</span>
+    <br>
+    <span class="subtitle">Temp mínima {{clima_ciudad.temp_min }}° C</span>
+    <br>
+    <span class="subtitle">Humedad {{clima_ciudad.humedad }}%</span>
+    <br>
+  </p>
+  {% endfor %}
+</div>
 {% endblock content %}

@@ -68,7 +68,7 @@ def pronostico(index, nombre):
 
     ciudad2 = Ciudad.objects.get(nombre=nombre)
 
-    v = 'https://api.openweathermap.org/data/2.5/forecast/daily?q={}&cnt=6&appid=3c47737db41fa1aa40de3ad00fb240ec'
+    v = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
     a = v.format(ciudad2)
 
     full = requests.get(a).json()
@@ -78,7 +78,7 @@ def pronostico(index, nombre):
 
     lista_pronostico = {}
 
-    for c in range(0, 6):
+    for c in range(0, 5):
         variable_fecha = full['list'][c]['dt_txt']
         objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
 
@@ -107,7 +107,7 @@ def pronostico(index, nombre):
         'lista_pronostico':lista_pronostico,
     }
 
-    return render(request, 'clima/vacio.html', context)
+    return render(index, 'clima/vacio.html', context)
 
 def eliminar_ciudad(request, nombre_ciudad,):
 
