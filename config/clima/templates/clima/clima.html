@@ -1,0 +1,68 @@
+{% extends 'clima/main.html' %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                      {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.nombre }}
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-info">
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+                        {% if mensaje %}
+                            <div class="notification {{ mensaje_class }}">{{ mensaje }}</div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for clima_ciudad in clima_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{clima_ciudad.icono }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="{% url 'dias' clima_ciudad.ciudad %}"><span class="title">{{clima_ciudad.ciudad }}, {{clima_ciudad.pais }}</span></a>
+                                        <br>
+                                        <span style="font-weight: bold" class="subtitle">{{clima_ciudad.temperatura }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Temp máxima {{clima_ciudad.temp_max }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Temp mínima {{clima_ciudad.temp_min }}° C</span>
+                                        <br>
+                                        <span class="subtitle">Humedad {{clima_ciudad.humedad }}%</span>
+                                        <br>
+                                        {{clima_ciudad.descripcion }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <a href="{% url 'eliminar_ciudad' clima_ciudad.ciudad %}">
+                                    <button class="delete"></button>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
