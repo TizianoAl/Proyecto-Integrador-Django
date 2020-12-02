@@ -68,7 +68,7 @@ def pronostico(index, nombre):
 
     ciudad2 = Ciudad.objects.get(nombre=nombre)
 
-    v = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid=3c47737db41fa1aa40de3ad00fb240ec'
+    v = 'https://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&appid=3c47737db41fa1aa40de3ad00fb240ec&lang=es'
     a = v.format(ciudad2)
 
     full = requests.get(a).json()

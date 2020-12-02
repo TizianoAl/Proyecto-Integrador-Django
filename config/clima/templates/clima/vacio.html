@@ -1,17 +1,30 @@
-{% extends 'clima/main.html' %}
-{% block content %}
-<div style="align=center">
-  {% for clima_ciudad in clima_data %}
-  <p>
-    <span>{{ ciudad2.nombre }}</span>
-    <br>
-    <span class="subtitle">Temp máxima {{clima_ciudad.temp_max }}° C</span>
-    <br>
-    <span class="subtitle">Temp mínima {{clima_ciudad.temp_min }}° C</span>
-    <br>
-    <span class="subtitle">Humedad {{clima_ciudad.humedad }}%</span>
-    <br>
-  </p>
-  {% endfor %}
-</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Klima</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel='icon' href='https://pngimage.net/wp-content/uploads/2018/05/clima-png-1.png' type='image/x-icon' >
+</head>
+<body>
+  <section class="hero is-primary">
+      <div class="hero-body" style="background-color: rgb(31, 97, 141);">
+          <div class="container">
+              <h1 class="title">
+                  Pronóstico Extendido
+              </h1>
+          </div>
+      </div>
+  </section>
+  <br><br>
+  <section style="text-align: center">
+      <div>
+        <p>
+          <span style="font-weight: bold" class="title">{{ ciudad2.nombre }}</span>
+        </p>
+      </div>
+  </section>
+</body>
+</html>
