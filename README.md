@@ -3,10 +3,10 @@
 ## Descripción:
 
 Página meteorológica en el cual el usuario inserta una ciudad en el buscador y le
-devuelve el nombre de la ciudad que ingreso, la temperatura en °C, la descripción del clima y una imagen
+devuelve el nombre de la ciudad que ingreso, la temperatura en °C, la temperatura máxima en °C, la temperatura mínima en °C, la humedad, la descripción del clima y una imagen
 de la descripción.
-Después una vez ingresada la ciudad el usuario puede eliminar la ciudad que ingreso para
-ver el clima.
+Si desea ver el pronostico extendido de la ciudad que ingresó, debe clickear el nombre de la ciudad y podrá ver un pronostico extendido de 4 días, que mostrará el día, la fecha, la temperatura máxima en °C, la temperatura mínima en °C, la descripción del clima y una imagen de la descripción.
+Después una vez ingresada la ciudad el usuario puede eliminar la ciudad que ingreso.
 
 ## Requerimientos para correr el programa:
 

@@ -91,7 +91,7 @@ def pronostico(index, nombre):
             lista_pronostico[fecha_hoy]['fecha'] = objeto_tiempo.strftime('%d %b, %Y')
 
             lista_pronostico[fecha_hoy]['temp_max'] = full['list'][c]['main']['temp_max']
-            lista_pronostico[fecha_hoy]['temp_min'] = full['list'][c]['main']['temp_min']
+            lista_pronostico[fecha_hoy]['temp_min'] = full['list'][c]['main']['feels_like']
 
             lista_pronostico[fecha_hoy]['descripcion'] = full['list'][c]['weather'][0]['description']
             lista_pronostico[fecha_hoy]['icono'] = full['list'][c]['weather'][0]['icon']
