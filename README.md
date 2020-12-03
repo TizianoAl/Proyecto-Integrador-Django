@@ -32,7 +32,7 @@ Deberá descargar los archivos desde el repositorio del proyecto con los siguien
 
 ```sh
 $ git init
-$ git clone https://github.com/TizianoAl/Proyecto-Integrador-Django.git
+$ git clone --branch master https://github.com/TizianoAl/Proyecto-Integrador-Django.git
 ```
 
 ## Ejecución del Proyecto:
