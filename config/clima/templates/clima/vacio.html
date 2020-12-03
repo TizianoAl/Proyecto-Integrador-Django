@@ -19,12 +19,13 @@
       </div>
   </section>
   <br><br>
-  <section style="text-align: center">
-      <div>
-        <p>
-          <span style="font-weight: bold" class="title">{{ ciudad2.nombre }}</span>
-        </p>
-      </div>
-  </section>
+  <span style="text-align: center" class="title">{{ ciudad2 }}</span>
+  {% for clima_key, clima_value in lista_pronostico.items %}
+              <div class="content">
+                  <p>
+                      <span class="title">{{clima_value.dia}}</span>
+                  </p>
+              </div>
+  {% endfor %}
 </body>
 </html>

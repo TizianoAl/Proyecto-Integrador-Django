@@ -62,6 +62,7 @@ def index(request):
         'mensaje' : mensaje,
         'mensaje_class' : mensaje_class,
     }
+
     return render(request, 'clima/clima.html', context)
 
 def pronostico(index, nombre):
@@ -78,29 +79,24 @@ def pronostico(index, nombre):
 
     lista_pronostico = {}
 
-    for c in range(0, 5):
+    for c in range(0, 39, 8):
         variable_fecha = full['list'][c]['dt_txt']
         objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
 
-        if int(objeto_tiempo.strftime('%d')) == fecha_hoy or int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
+        if int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
 
-            if int(objeto_tiempo.strftime('%d')) == fecha_hoy+1:
-                fecha_hoy += 1
             lista_pronostico[fecha_hoy] = {}
-            lista_pronostico[fecha_hoy]['day'] = objeto_tiempo.strftime('%A')
-            lista_pronostico[fecha_hoy]['date'] = objeto_tiempo.strftime('%d %b, %Y')
-            lista_pronostico[fecha_hoy]['time'] = objeto_tiempo.strftime('%I:%M %p')
+            lista_pronostico[fecha_hoy]['dia'] = objeto_tiempo.strftime('%A')
+            lista_pronostico[fecha_hoy]['fecha'] = objeto_tiempo.strftime('%d %b, %Y')
 
-            lista_pronostico[fecha_hoy]['temperature'] = full['list'][c]['main']['temp']
-            lista_pronostico[fecha_hoy]['temperature_max'] = full['list'][c]['main']['temp_max']
-            lista_pronostico[fecha_hoy]['temperature_min'] = full['list'][c]['main']['temp_min']
+            lista_pronostico[fecha_hoy]['temp_max'] = full['list'][c]['main']['temp_max']
+            lista_pronostico[fecha_hoy]['temp_min'] = full['list'][c]['main']['temp_min']
 
-            lista_pronostico[fecha_hoy]['description'] = full['list'][c]['weather'][0]['description']
-            lista_pronostico[fecha_hoy]['icon'] = full['list'][c]['weather'][0]['icon']
+            lista_pronostico[fecha_hoy]['descripcion'] = full['list'][c]['weather'][0]['description']
+            lista_pronostico[fecha_hoy]['icono'] = full['list'][c]['weather'][0]['icon']
 
             fecha_hoy += 1
-        else:
-            pass
+    print(lista_pronostico)
 
     context = {
         'ciudad2':ciudad2,
