@@ -13,19 +13,48 @@
       <div class="hero-body" style="background-color: rgb(31, 97, 141);">
           <div class="container">
               <h1 class="title">
-                  Pronóstico Extendido
+                  Pronóstico Extendido de {{ ciudad2 }}
               </h1>
           </div>
       </div>
   </section>
-  <br><br>
-  <span style="text-align: center" class="title">{{ ciudad2 }}</span>
-  {% for clima_key, clima_value in lista_pronostico.items %}
-              <div class="content">
-                  <p>
-                      <span class="title">{{clima_value.dia}}</span>
-                  </p>
+  <section class="section">
+      <div class="container">
+          <div class="columns">
+              <div class="column is-offset-4 is-4">
+                  {% for clima_key, clima_value in lista_pronostico.items %}
+                  <div class="box">
+                      <article class="media">
+                          <div class="media-left">
+                              <figure class="image is-50x50">
+                                  <img src="http://openweathermap.org/img/w/{{ clima_value.icono }}.png" alt="Image">
+                              </figure>
+                          </div>
+                          <div class="media-content">
+                              <div class="content">
+                                  <p>
+                                      <span class="title">{{ clima_value.dia }}</span>
+                                      <br>
+                                      <span style="font-weight: bold" class="subtitle">{{ clima_value.fecha }}</span>
+                                      <br>
+                                      <span class="subtitle">Temp máxima {{ clima_value.temp_max }}° C</span>
+                                      <br>
+                                      <span class="subtitle">Temp mínima {{ clima_value.temp_min }}° C</span>
+                                      <br>
+                                      {{ clima_value.descripcion }}
+                                  </p>
+                              </div>
+                          </div>
+                      </article>
+                  </div>
+                  {% endfor %}
               </div>
-  {% endfor %}
+          </div>
+      </div>
+  </section>
+  <form method="get" action="http://127.0.0.1:8000/" style="text-align: center">
+      <button type="submit" style="font-size: 20px" class="button is-info">Volver</button>
+  </form>
+  <br><br><br>
 </body>
 </html>

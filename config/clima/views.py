@@ -80,6 +80,7 @@ def pronostico(index, nombre):
     lista_pronostico = {}
 
     for c in range(0, 39, 8):
+
         variable_fecha = full['list'][c]['dt_txt']
         objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
 
@@ -96,7 +97,7 @@ def pronostico(index, nombre):
             lista_pronostico[fecha_hoy]['icono'] = full['list'][c]['weather'][0]['icon']
 
             fecha_hoy += 1
-    print(lista_pronostico)
+
 
     context = {
         'ciudad2':ciudad2,
