@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klima</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
     <link rel='icon' href='https://pngimage.net/wp-content/uploads/2018/05/clima-png-1.png' type='image/x-icon' >
 </head>
 <body>
   <section class="hero is-primary">
-      <div class="hero-body" style="background-color: rgb(31, 97, 141);">
+      <div class="hero-body" id="navbar">
           <div class="container">
               <h1 class="title">
                   Clima de las ciudades
