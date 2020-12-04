@@ -1,7 +1,7 @@
 import requests
 import datetime
 from django.shortcuts import render, redirect
-from .models import Ciudad
+from .models import *
 from .forms import CiudadForm
 
 def index(request):
@@ -79,7 +79,7 @@ def pronostico(index, nombre):
 
     lista_pronostico = {}
 
-    for c in range(0, 39, 8):
+    for c in range(1, 39, 8):
 
         variable_fecha = full['list'][c]['dt_txt']
         objeto_tiempo = datetime.datetime.strptime(variable_fecha, '%Y-%m-%d %H:%M:%S')
@@ -97,6 +97,23 @@ def pronostico(index, nombre):
             lista_pronostico[fecha_hoy]['icono'] = full['list'][c]['weather'][0]['icon']
 
             fecha_hoy += 1
+
+    fecha_hoy = int(day.strftime('%d'))
+
+
+    for x in range(5):
+
+        try:
+
+            pronostico1 = Pronostico.objects.filter(fecha__iexact=fecha_hoy,ciudad=ciudad2).get()
+
+        except:
+
+            Pronostico.objects.create(ciudad=ciudad2, dia=lista_pronostico[fecha_hoy]['dia'], fecha=lista_pronostico[fecha_hoy]['fecha'], temp_max=lista_pronostico[fecha_hoy]['temp_max'], temp_min=lista_pronostico[fecha_hoy]['temp_min'], descripcion=lista_pronostico[fecha_hoy]['descripcion'])
+
+        fecha_hoy += 1
+
+    cinco = ciudad2.pronostico_set.all()
 
 
     context = {
