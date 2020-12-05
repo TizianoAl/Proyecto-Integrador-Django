@@ -3,6 +3,7 @@ import datetime
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import CiudadForm
+from django.core.exceptions import ObjectDoesNotExist
 
 def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=3c47737db41fa1aa40de3ad00fb240ec&lang=es'
@@ -100,25 +101,38 @@ def pronostico(index, nombre):
 
     fecha_hoy = int(day.strftime('%d'))
 
+    try:
+        for x in range(4):
 
-    for x in range(5):
+            try:
+                cinco = ciudad2.pronostico_set.all().get(fecha=lista_pronostico[fecha_hoy]['fecha'], ciudad=ciudad2)
 
-        try:
+            except Pronostico.DoesNotExist:
+                Pronostico.objects.create(ciudad=ciudad2,
+                                          dia=lista_pronostico[fecha_hoy]['dia'],
+                                          fecha=lista_pronostico[fecha_hoy]['fecha'],
+                                          temp_max=lista_pronostico[fecha_hoy]['temp_max'],
+                                          temp_min=lista_pronostico[fecha_hoy]['temp_min'],
+                                          descripcion=lista_pronostico[fecha_hoy]['descripcion'],
+                                          )
 
-            pronostico1 = Pronostico.objects.filter(fecha__iexact=fecha_hoy,ciudad=ciudad2).get()
+            else:
+                pass
 
-        except:
+            fecha_hoy += 1
+    except:
+        pass
 
-            Pronostico.objects.create(ciudad=ciudad2, dia=lista_pronostico[fecha_hoy]['dia'], fecha=lista_pronostico[fecha_hoy]['fecha'], temp_max=lista_pronostico[fecha_hoy]['temp_max'], temp_min=lista_pronostico[fecha_hoy]['temp_min'], descripcion=lista_pronostico[fecha_hoy]['descripcion'])
+    else:
+        cinco = ciudad2.pronostico_set.all().filter(ciudad=ciudad2)
 
-        fecha_hoy += 1
-
-    cinco = ciudad2.pronostico_set.all()
+    fecha_hoy = int(day.strftime('%d'))
 
 
     context = {
         'ciudad2':ciudad2,
         'lista_pronostico':lista_pronostico,
+        'cinco':cinco,
     }
 
     return render(index, 'clima/vacio.html', context)

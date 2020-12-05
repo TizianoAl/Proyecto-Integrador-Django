@@ -22,26 +22,21 @@
       <div class="container">
           <div class="columns">
               <div class="column is-offset-4 is-4">
-                  {% for clima_key, clima_value in lista_pronostico.items %}
+                  {% for clima in cinco %}
                   <div class="box">
                       <article class="media">
-                          <div class="media-left">
-                              <figure class="image is-50x50">
-                                  <img src="http://openweathermap.org/img/w/{{ clima_value.icono }}.png" alt="Image">
-                              </figure>
-                          </div>
                           <div class="media-content">
                               <div class="content">
                                   <p>
-                                      <span class="title">{{ clima_value.dia }}</span>
+                                      <span class="title">{{ clima.dia }}</span>
                                       <br>
-                                      <span style="font-weight: bold" class="subtitle">{{ clima_value.fecha }}</span>
+                                      <span style="font-weight: bold" class="subtitle">{{ clima.fecha }}</span>
                                       <br>
-                                      <span class="subtitle">Temp máxima {{ clima_value.temp_max }}° C</span>
+                                      <span class="subtitle">Temp máxima {{ clima.temp_max }}° C</span>
                                       <br>
-                                      <span class="subtitle">Temp mínima {{ clima_value.temp_min }}° C</span>
+                                      <span class="subtitle">Temp mínima {{ clima.temp_min }}° C</span>
                                       <br>
-                                      {{ clima_value.descripcion }}
+                                      {{ clima.descripcion }}
                                   </p>
                               </div>
                           </div>
