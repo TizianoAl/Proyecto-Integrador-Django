@@ -20,4 +20,3 @@ class Pronostico(models.Model):
 
     def __str__(self):
         return self.ciudad.nombre
-        

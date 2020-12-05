@@ -130,9 +130,9 @@ def pronostico(index, nombre):
 
 
     context = {
-        'ciudad2':ciudad2,
-        'lista_pronostico':lista_pronostico,
-        'cinco':cinco,
+        'ciudad2' : ciudad2,
+        'lista_pronostico' : lista_pronostico,
+        'cinco' : cinco,
     }
 
     return render(index, 'clima/vacio.html', context)
